@@ -15,7 +15,34 @@ export default function SellersPage() {
 
       <section className={styles.hero}>
         <h2>Meet Our Sellers</h2>
-        <p>Learn more about the independent artisans behind our handmade products.</p>
+        <p>
+          Learn more about the independent artisans behind our handmade
+          products.
+        </p>
+      </section>
+
+      <section className={styles.products}>
+        <h2>Featured Sellers</h2>
+
+        <div className={styles.grid}>
+          <article className={styles.card}>
+            <h3>Samuel's Woodshop</h3>
+            <p>Location: Idaho</p>
+            <p>Specialty: Wooden bowls and home decor</p>
+          </article>
+
+          <article className={styles.card}>
+            <h3>Haven Leather Co.</h3>
+            <p>Location: Utah</p>
+            <p>Specialty: Handmade leather goods</p>
+          </article>
+
+          <article className={styles.card}>
+            <h3>Cozy Craft Studio</h3>
+            <p>Location: Oregon</p>
+            <p>Specialty: Knitted blankets and home accessories</p>
+          </article>
+        </div>
       </section>
     </main>
   );
