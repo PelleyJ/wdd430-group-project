@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import styles from "../page.module.css";
 
 const products = [
@@ -21,7 +24,13 @@ const products = [
   },
 ];
 
-export default function ProductsPage() {
+export default function SearchPage() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <main className={styles.page}>
       <nav className={styles.navbar}>
@@ -35,28 +44,29 @@ export default function ProductsPage() {
       </nav>
 
       <section className={styles.hero}>
-        <h2>Products</h2>
-        <p>Browse handmade items from independent sellers.</p>
+        <h2>Search Products</h2>
+        <p>Find handmade products by name.</p>
+
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
+        />
       </section>
 
       <section className={styles.products}>
-        <h2>Featured Products</h2>
+        <h2>Results</h2>
 
         <div className={styles.grid}>
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <article key={product.id} className={styles.card}>
               <h3>{product.name}</h3>
-
               <p>{product.description}</p>
-
               <p>
                 <strong>{product.price}</strong>
               </p>
-
-              <a
-                href={`/products/${product.id}`}
-                className={styles.button}
-              >
+              <a href={`/products/${product.id}`} className={styles.button}>
                 View Details
               </a>
             </article>
